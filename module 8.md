@@ -14,17 +14,75 @@ Algorithm:
 -	Default: Print "Greater than 13"
 4.	Exit the program.
  
-Program:
+### Program:
+```
+#include <stdio.h>
+int main() {
+    int n;
+    printf("Enter a number: ");
+    scanf("%d", &n);
+switch (n) {
+    case 1:
+       printf("one\n");
+       break;
+    case 2:
+       printf("two\n");
+       break;
+    case 3:
+       printf("three\n");
+       break;
+    case 4:
+       printf("four\n");
+       break;
+    case 5:
+       printf("five\n");
+       break;
+    case 6:
+       printf("six\n");
+       break;
+    case 7:
+       printf("seven\n");
+       break;
+    case 8:
+       printf("eight\n");
+       break;
+    case 9:
+       printf("nine\n");
+       break;
+    case 10:
+       printf("ten\n");
+       break;
+    case 11:
+       printf("eleven\n");
+       break;
+    case 12:
+       printf("twelve\n");
+       break;
+    case 13:
+       printf("thirteen\n");
+       break;
+    default:
+       printf("Greater than 13\n");
+       break;
+}
+return 0;
+}
+```
 
-//type your code here
 
 
 
 
-Output:
 
 
-//paste your output here
+
+### Output:
+
+<img width="450" height="253" alt="image" src="https://github.com/user-attachments/assets/11a01186-30c0-49ea-a5c1-a1980daea0b4" />
+
+
+
+
 
 
 
@@ -45,17 +103,40 @@ Algorithm:
 5.	Increment h to move to the next digit
 6.	End
  
-Program:
+### Program:
+```
+#include <stdio.h>
+int main() {
+    char a[50];
+    int i, h, c;
+    printf("Enter a string of digits: ");
+    scanf("%s", a);
+    for (h = 0; h <= 3; h++) {
+        c = 0;
+        for (i = 0; a[i] != '\0'; i++) {
+            if (a[i] - '0' == h) {
+                c++;
+            }
+        }
+        printf("%d ", c);
+    }
 
-//type your code here
+    printf("\n");
+    return 0;
+}
+```
 
 
 
 
-Output:
 
 
-//paste your output here
+### Output:
+<img width="566" height="232" alt="image" src="https://github.com/user-attachments/assets/94792926-e5a2-472b-a431-29f7c1b63422" />
+
+
+
+
 
 
 
@@ -82,17 +163,68 @@ Read the number of strings n from the user Dynamically allocate memory for each 
 Free the memory allocated for each string in s Free the memory allocated for s
 7.	End
  
-Program:
+### Program:
+```
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+int next_permutation(int n, char **s)
+{
+     int k, l;
+  for (k = n - 2; k >= 0; k --)
+ {
+    if(strcmp(s[k], s[k+1]) < 0) break;
+  }
+  if (k < 0) return 0;
+  for (l = n -1; l > k; l --)
+ {
+    if(strcmp(s[k], s[l]) < 0) break;
+  }
+  char * tmp = s[k];
+  s[k] = s[l];
+  s[l] = tmp;
+  for(int i = k + 1, j = n -1; i < j; i ++, j --)
+ {
+    tmp = s[i];
+    s[i] = s[j];
+    s[j] = tmp;
+  }
+  return 1;
+}
+int main()
+{
+    char **s;
+    int n;
+    scanf("%d", &n);
+    s = calloc(n, sizeof(char*));
+    for (int i = 0; i < n; i++)
+    {
+        s[i] = calloc(11, sizeof(char));
+        scanf("%s", s[i]);
+    }
+    do
+    {
+        for (int i = 0; i < n; i++)
+            printf("%s%c", s[i], i == n - 1 ? '\n' : ' ');
+    } while (next_permutation(n, s));
+    for (int i = 0; i < n; i++)
+        free(s[i]);
+    free(s);
+    return 0;
+}
 
-//type your code here
+```
 
 
 
 
-Output:
 
 
-//paste your output here
+### Output:
+<img width="476" height="304" alt="image" src="https://github.com/user-attachments/assets/b20688eb-3c5c-4c8b-8f50-00f59c3047a3" />
+
+
+
 
 
 
@@ -115,17 +247,34 @@ Algorithm:
 6.	Calculate min as the minimum distance to the borders
 7.	End
  
-Program:
+### Program:
 
-//type your code here
+```
+#include <stdio.h>
+int main() {
+    int n, i, j, len, min;
+    printf("Enter the value of n: ");
+    scanf("%d", &n);
+    len = n * 2 - 1;
+    for (i = 0; i < len; i++) {
+        for (j = 0; j < len; j++) {
+            min = (i < j) ? i : j;
+            min = (min < len - i - 1) ? min : len - i - 1;
+            min = (min < len - j - 1) ? min : len - j - 1;
+            printf("%d ", n - min);
+    }
+    printf("\n");
+ }
+ return 0;
+}
+```
 
 
 
+### Output:
 
-Output:
+<img width="610" height="439" alt="image" src="https://github.com/user-attachments/assets/2a6e5350-f075-41ad-880b-8167a7273108" />
 
-
-//paste your output here
 
 
 
@@ -154,17 +303,30 @@ o	Return the squared value.
 o	Call the square() function and display the result.
 5.	End.
 
-Program:
+### Program:
 
-//type your code here
+```
+#include <stdio.h>
+int square() {
+    int num;
+    printf("Enter a number: ");
+    scanf("%d", &num);
+    return num * num;
+}
+int main() {
+   int result = square();
+   printf("The square of the number is: %d\n", result);
+   return 0;
+}
+```
 
 
 
 
-Output:
+### Output:
 
 
-//paste your output here
+<img width="498" height="211" alt="image" src="https://github.com/user-attachments/assets/b1395cc2-e9e3-4cb4-8e41-d17b91320ebb" />
 
 
 
