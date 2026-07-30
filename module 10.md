@@ -8,13 +8,49 @@ Algorithm:
 3.	Initialize the head of the linked list as needed.
 4.	Call the search function and perform other linked list operations as needed.
  
-Program:
+### Program:
 
-//type your code here
+```
+struct Node
+{
+    char data;
+    struct Node *next;
+}*head;
+void search(char data)
+{
+   struct Node *temp;
+   temp=head;
+   int loc=1,flag=0;
+       while(temp!=NULL)
+       {
+          if(temp->data == data)
+          {
+              flag=1;
+              break;
+          }
+          else
+          {
+              temp=temp->next;
+              loc++;
+          }
+       }  
+}
+if(flag==0)
+{
+    printf("Item not found");
+}
+else
+{
+    printf("item %c found at location %d",data,loc);
+}
+}
 
-Output:
+```
 
-//paste your output here
+### Output:
+
+<img width="1371" height="834" alt="image" src="https://github.com/user-attachments/assets/297eb836-2a9b-4b3c-bbc9-08d1e3c6a5ff" />
+
 
 
 
@@ -32,13 +68,40 @@ Algorithm:
 3.	Initialize the head of the linked list as needed.
 4.	Call the insert function and perform other linked list operations as needed.
  
-Program:
+### Program:
 
-//type your code here
+```
+struct Node{
+    int data;
+    struct Node *next;
+}*head;
+void insert(int data)
+{
+     struct Node *newnode,*temp;
+     newnode=(struct Node *)malloc(sizeof(struct Node));
+     newnode->data=data;
+     newnode->next=NULL;
+     if(head==NULL)
+     {
+       head=newnode;
+     }
+     else
+     {
+       temp=head;
+       while(temp->next != NULL)
+       {
+            temp=temp->next;
+       }
+       temp->next=newnode;
+     }
+}
 
-Output:
+```
 
-//paste your output here
+### Output:
+
+<img width="855" height="882" alt="image" src="https://github.com/user-attachments/assets/6a18ec32-23e2-4a42-81a8-721244309349" />
+
 
  
 Result:
@@ -56,13 +119,31 @@ Algorithm:
 3.	Inside the loop, print the data of the current node.
 4.	Move to the next node by updating the temp pointer to point to the next node (temp = temp->next).
  
-Program:
+### Program:
 
-//type your code here
+```
+struct Node
+{
+    struct Node *prev;
+    struct Node *next;
+    char data;
+}*head;
+void display()
+{
+    struct Node *temp=head;
+    while(temp!=NULL)
+    {
+        printf("%c ",temp->data);
+        temp=temp->next;
+    }
+}
 
-Output:
+```
 
-//paste your output here
+### Output:
+
+<img width="687" height="885" alt="image" src="https://github.com/user-attachments/assets/cde4cc5e-1ee1-4f8a-a0cd-204b022b3dab" />
+
 
 
 Result:
@@ -81,13 +162,43 @@ Algorithm:
 4.	If the list is not empty, traverse the list to find the last node.
 5.	Set the new node's prev pointer to the last node and update the last node's next pointer to the new node.
  
-Program:
+### Program:
 
-//type your code here
+```
+struct Node
+{
+    struct Node *prev;
+    struct Node *next;
+    int data;
+}*head;
+void insert(int data)
+{
+    struct Node *temp,*newnode=(struct Node*)malloc(sizeof(struct Node));
+    newnode->data=data;
+    newnode->next=NULL;
+    newnode->prev=NULL;
+if(head==NULL)
+{
+    head=newnode;
+}
+else
+{
+   temp=head;
+   while(temp->next!=NULL)
+   {
+    temp=temp->next;
+   }
+temp->next=newnode;
+newnode->prev=temp;
+}
+}
 
-Output:
+```
 
-//paste your output here
+### Output:
+
+<img width="855" height="882" alt="image" src="https://github.com/user-attachments/assets/c4bf07bb-cb0b-4a97-95b7-e43d03da33a6" />
+
 
 
 Result:
@@ -123,13 +234,52 @@ o	If the element is not found in any node, print a message indicating the elemen
 6.	End the Function.
 
 
-Program:
+### Program:
 
-//type your code here
+```
+struct Node
+{
+    struct Node *next;
+    int data;
+}*head;
+void delete(int data) {
+    struct Node *current, *prev;
 
-Output:
+    if (head == NULL) {
+        printf("List is empty\n");
+        return;
+    }
 
-//paste your output here
+    if (head->data == data) {
+        current = head;
+        head = head->next;
+        free(current);
+        printf("Element %d deleted\n", data);
+        return;
+    }
+
+    prev = head;
+    current = head->next;
+    while (current != NULL) {
+        if (current->data == data) {
+            prev->next = current->next;
+            free(current);
+            printf("Element %d deleted\n", data);
+            return;
+        }
+        prev = current;
+        current = current->next;
+    }
+
+    printf("Element %d not found in the list\n", data);
+}
+
+```
+
+### Output:
+
+<img width="909" height="402" alt="image" src="https://github.com/user-attachments/assets/d54d6383-6ca5-4ea9-a843-4073e4d4d292" />
+
 
 
 
